@@ -11,4 +11,5 @@ for x in all_letter:
 
 num_chart = len(mapping)
 print(num_chart)
-print(mapping)
+# print(mapping)
+print(mapping_inv)
