@@ -7,6 +7,8 @@ import string
 import cv2
 from PIL import Image
 from sklearn.model_selection import train_test_split
+from torchvision import transforms
+from torch.utils.data import Dataset, DataLoader
 #  I am using my local directory as path so  when you copy my code take care of it.
 path = 'D:/chair problem/recapa/samples/samples/'
 
