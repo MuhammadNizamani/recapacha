@@ -9,6 +9,21 @@ from PIL import Image
 from sklearn.model_selection import train_test_split
 from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
+import torch
+import multiprocessing as mp
+
+# here in the begnining the i am deffing 
+BATCH_SIZE = 16
+NUM_EPOCHS = 50
+LEARNING_RATE = 0.001
+WEIGHT_DECAY = 1e-3
+CLIP_NORM = 5
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+cpu_count = mp.cpu_count()
+
+print(f'Device: {DEVICE}')
+print(f'cpu_count: {cpu_count}')
+
 #  I am using my local directory as path so  when you copy my code take care of it.
 path = 'D:/chair problem/recapa/samples/samples/'
 
