@@ -82,11 +82,13 @@ class CaptchaDataset(Dataset):
 
 # The function len retrun the size of arry image or number of images in the dataset
 
+
     def __len__(self):
         return len(self.image_filename)
 
 
 # function getitem take index as a input and return the the name of image and the image
+
 
     def __getitem__(self, index):
         image_filename = self.image_filename[index]
@@ -104,7 +106,7 @@ class CaptchaDataset(Dataset):
 # values specified in std. The values in mean and std are expected to
 # be sequences of length 3, corresponding to the mean and standard
 # deviation values for the red, green, and blue channels of the image.
-    def transfrom(image):
+    def transfrom(self, image):
         transform_op = transforms.Compose(
             [transforms.ToTensor(),
              transforms.Normalize(mean=(0.485, 0.456, 0.406),
@@ -125,13 +127,9 @@ test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE,
 print(f'{len(train_loader)} batches in the train_loader')
 print(f'{len(test_loader)} batches in the test_loader')
 
+#this solution works on Kaggle's notebook but it not working on vscode
 
-# below code is not working for some expetion and I am trying to solve
-try:
-    batch_images, batch_labels = iter(train_loader).next()
-except:
-    print("An exception occurred")
-
-
+dataiter = iter(train_loader)
+batch_images, batch_labels = next(dataiter)
 print(batch_images.shape)
 print(batch_labels)
